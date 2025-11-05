@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MiniGestion - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    h2 { margin-bottom: 20px; }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4a90e2;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #357abd;
+    }
+    .flash {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>MiniGestion</h2>
+
+    <!-- Bloque para mensajes flash -->
+    <div class="flash">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p>{{ msg }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+
+    <!-- Formulario de login -->
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Usuario" required autocomplete="off">
+      <input type="password" name="password" placeholder="Contraseña" required autocomplete="off">
+      <button type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+</body>
+</html>
